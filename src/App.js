@@ -2,6 +2,9 @@ import './App.css';
 import { BrowserRouter as Router, Route }  from 'react-router-dom';
 import Login from './login/Login';
 import Main from './homepage/Main';
+import Agency from './homepage/Agency';
+import Agency_mypage from './mypage/Agency_mypage';
+import Individual from './homepage/Individual';
 import Volunteer from './homepage/Volunteer';
 import Finding_id from './login/Finding_id';
 import Finding_id2 from './login/Finding_id2';
@@ -16,6 +19,9 @@ const App = () => {
     <>
     <Router>
       <Route path ='/' exact component = {Main}/>
+      <Route path ='/hompage/Agency' exact component = {Agency}/>
+      <Route path ='/mypage/Agency_mypage' exact component = {Agency_mypage}/>
+      <Route path ='/hompage/Individual' exact component = {Individual}/>
       <Route path ='/hompage/Volunteer' exact component = {Volunteer}/>
       <Route path ='/login/Login' exact component = {Login}/>
       <Route path ='/login/Finding_id' exact component = {Finding_id}/>

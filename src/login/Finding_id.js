@@ -115,27 +115,27 @@ const Finding_id=({history, mm,ss})=>{
 
                 <div className='middle_Box'>
                     <div className='middle_BoxH'>
-                        회원 정보에 등록한 이름과 이메일을 입력해주세요.
+                      <div style={{marginLeft:'20px'}}>
+                        회원 정보에 등록한 이름과 이메일을 입력해주세요.</div>
                     </div>
 
                 <div className='virtual_Box'>
                     <div className='middle_BoxN'>
-                      <div className='middle_BoxNtext' style={{marginRight:'25px',alignContent:'center'}}>
+                      <div className='middle_BoxNtext' style={{alignContent:'center',marginLeft:'20px'}}>
                         이름
                         </div>
                         <Input placeholder=" " 
-                        style={{width:'265px', height:'30px', marginRight:'122px'}}
+                        style={{width:'265px', height:'30px',marginLeft:'15px'}}
                         />
                     </div>
 
                     <div className='middle_BoxE'>
-                        <div  style={{marginRight:'20px'}}>이메일</div>
+                        <div  style={{marginRight:'10px'}}>이메일</div>
                         
                         <Input placeholder=" " 
-                        style={{width:'120px', height:'30px'}}
+                        style={{width:'115px', height:'30px'}}
                         /> &nbsp; @ &nbsp;
                         
-
                         <AutoComplete
                             style={{
                               width: 120, height:30
@@ -147,16 +147,6 @@ const Finding_id=({history, mm,ss})=>{
                             }
                           />                     
 
-                            <Button block
-                            style={{display:'flex',width: '100px', height: '30px', justifyContent: 'center',alignItems:'center'
-                            , marginLeft:'10px',borderRadius:'5px',marginRight:'30px'}}
-                            >인증번호 받기</Button>
-                    </div>
-                    <div className='middle_BoxT'>
-                    <Input placeholder=" " 
-                        style={{width:'270px', height:'30px', marginLeft:'15px', marginRight:'15px'}}
-                        />
-                        {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
                     </div>
 
                     </div>
@@ -165,7 +155,7 @@ const Finding_id=({history, mm,ss})=>{
                     <Button bold
                     onClick={()=> {history.push('./Finding_id2')}}
                             style={{display:'flex',width: '100px', height: '30px', justifyContent: 'center'
-                            , marginRight:'65px',borderRadius:'5px'}}
+                            ,borderRadius:'5px', marginLeft:'5px'}}
                             >확인</Button>
                     </div>
                     

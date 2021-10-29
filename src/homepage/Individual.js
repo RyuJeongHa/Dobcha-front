@@ -1,14 +1,20 @@
 import React from  'react'
-import './Main.css';
-import { Divider,  Button, Carousel, Menu, Dropdown} from 'antd';
+import './Individual.css';
+import { Divider,  Button, Carousel, Menu, Dropdown,Modal} from 'antd';
 import logo from '../images/dobcha_logo.png';
 import img_banner1 from '../images/img_banner1.png';
 import img_banner2 from '../images/img_banner2.png';
 import img_donation from '../images/img_donation.png';
 import img_volunteer from '../images/img_volunteer.png';
+import { BankFilled ,UserOutlined} from '@ant-design/icons';
 
 
-const Main=({history}) => {
+const Individual=({history}) => {
+
+    const individualname = '류정하'
+    //임의로 설정했습니다. 나중에 db에서 가져와주세요~~
+
+    const [isModal, setIsModal] = React.useState(false);
 
     const menu = (
         <Menu>
@@ -29,6 +35,10 @@ const Main=({history}) => {
           </Menu.Item>  {/* 마감된 기부 경로 바꾸기*/} 
         </Menu>
       );
+
+      React.useEffect(() => {
+        alert(`${individualname}님 안녕하세요`)
+    },[])
       
   
     return(
@@ -59,17 +69,36 @@ const Main=({history}) => {
                 </div>
 
                 <div className='main_btn'>
-                    <Button block 
-                    style={{display:'flex',width: '100px', height: '30px', justifyContent: 'center'
-                    ,borderRadius:'5px', marginTop:'10px', marginRight:'15px'}}
-                    onClick={()=> {history.push('/login/Login')}}
-                    >로그인</Button>
-                    <Button block 
-                    style={{display:'flex',width: '100px', height: '30px', justifyContent: 'center'
-                    ,borderRadius:'5px', marginTop:'10px'}}
-                    onClick={()=> {history.push('/')}}
-                    >회원가입 </Button>{/* 회원가입 페이지로 경로 바꾸기*/}
+                    <div className='individual_icon'  style={{marginTop:'12px', marginRight:'30px'}}>
+                        {<UserOutlined onClick={()=> {history.push('/login/Login')}} 
+                    style={{fontSize:'20px'}}/>}  &nbsp;&nbsp;
+                    <text style={{color: 'black',fontSize:'17px',  fontWeight:'bold'}}>
+                    {`${individualname} 님`}
+                </text>
+                    </div> {/* 마이페이지로 경로 바꾸기*/} 
+                    <div style={{marginTop:'12px'}}>
+                    <a onClick={() => setIsModal(true)} 
+                    style={{fontSize:'17px', fontWeight:'bold'}}>&nbsp;&nbsp; 로그아웃</a>
+                    </div>
+                    <Modal
+                visible={isModal}
+                onCancel={() => setIsModal(false)}
+                onOk={() => {
+                    setIsModal(false)
+                    history.push('/')
+                }}
+                title={'로그아웃'}
+            >
+                <div
+                    style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', height: '100%'}}
+                >
+                    <h2>로그아웃을 하시겠습니까?</h2>
                 </div>
+            </Modal>
+                </div>
+
+
+
             </div>
             <Divider/>
 
@@ -122,4 +151,4 @@ const Main=({history}) => {
 
 
 
-export default Main;
+export default Individual;

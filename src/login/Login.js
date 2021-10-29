@@ -6,7 +6,6 @@ import logo from '../images/dobcha_logo.png'
 
 
 
-
 const Login=({history}) => {
     function onChange(e) {
         console.log(`checked = ${e.target.checked}`);
@@ -16,14 +15,15 @@ const Login=({history}) => {
       const [key1, setKey1] = React.useState('')
 
       const handleLogin = () => {
-          key === whiteList.id ? history.push('../'): message.error('등록되지 않은 기관입니다.')
+          key === whiteList.id ? history.push('../hompage/Agency'): message.error('등록되지 않은 기관입니다.')
       } /* 이동 링크 바꾸기 로그인: 기관 로그인 시 나오는 페이지(Agency)*/
     const whiteList = {
         id:'test'
     } /* id는 임의로 적은 거라 백앤드 할 때 dB랑 연동해주세요~~*/
+   
 
     const handleLogin2 = () => {
-        key === whiteList2.id ? history.push('../'): message.error('등록되지 않은 사용자입니다.')
+        key1 === whiteList2.id ? history.push('../hompage/Individual'): message.error('등록되지 않은 사용자입니다.')
     }/* 이동 링크 바꾸기 로그인: 로그인: 개인 로그인 시 나오는 페이지(Individual)*/
 
     const whiteList2 ={
@@ -60,7 +60,8 @@ const Login=({history}) => {
                         <div className="bb">
                         <div className="bb1">{<LockFilled />}</div>
                         <div className="bb2">
-                        <Input placeholder="PW" />
+                        <Input placeholder="PW" 
+                        />
                         </div>
                         </div>
 
@@ -105,7 +106,9 @@ const Login=({history}) => {
                         <div className="bbb">
                         <div className="bbb1">{<LockFilled />}</div>
                         <div className="bbb2">
-                        <Input placeholder="PW" />
+                        <Input placeholder="PW"
+                        
+                         />
                         </div>
                         </div>
 
