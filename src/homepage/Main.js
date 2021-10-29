@@ -1,6 +1,6 @@
 import React from  'react'
 import './Main.css';
-import { Divider,  Button,Carousel} from 'antd';
+import { Divider,  Button, Carousel, Menu, Dropdown} from 'antd';
 import logo from '../images/dobcha_logo.png';
 import img_banner1 from '../images/img_banner1.png';
 import img_banner2 from '../images/img_banner2.png';
@@ -10,15 +10,25 @@ import img_volunteer from '../images/img_volunteer.png';
 const Main=({history}) => {
 
 
-    const contentStyle = {
-        width:'1200px',
-        height: '180px',
-        color: '#fff',
-        lineHeight: '200px',
-        background: '#364d79',
-        textAlign: 'center',
-      };
+    const menu = (
+        <Menu>
+          <Menu.Item>
+          <a onClick={() => {history.push('/login/Login')}} 
+          style={{padding:'10px'}}
+          >
+              진행중인 기부  
+            </a>
+          </Menu.Item>  {/* 진행중인 기부 경로 바꾸기*/} 
 
+          <Menu.Item>
+          <a onClick={() => {history.push('/login/Login')}} 
+          style={{padding:'10px', marginLeft:'5px'}}
+          >
+             마감된 기부
+            </a>
+          </Menu.Item>  {/* 마감된 기부 경로 바꾸기*/} 
+        </Menu>
+      );
       
 
     return(
@@ -29,13 +39,16 @@ const Main=({history}) => {
                             onClick ={( )=> {history.push('/')}}
                             /></Button>
                 <div className='main_click'>
-                 <a onClick={() => {history.push('/')}} 
-                 style={{padding:'10px', marginRight:'50px',
-                     color:'#000000' , fontSize:'17px', fontWeight:'bold' 
-                }}> 기부  {/* 기부 페이지 생기면 경로 바꾸기*/} </a>
 
+                     <Dropdown overlay={menu} placement="bottomCenter" arrow>
+                        <Button style={{padding:'10px', marginRight:'50px',
+                     color:'#000000' , fontSize:'17px', fontWeight:'bold', border:'none'
+                }}  >기부</Button>
+                     </Dropdown>
+
+                 
                 <a onClick={() => {history.push('/hompage/Volunteer')}} 
-                 style={{padding:'10px', marginRight:'30px',
+                 style={{padding:'10px', marginRight:'20px',
                      color:'#000000' , fontSize:'17px', fontWeight:'bold' 
                 }}> 봉사활동  {/* 봉사활동 페이지를 만들게 되면 경로 바꾸기*/} </a>
                 <a onClick={() => {history.push('/')}} 
@@ -70,12 +83,7 @@ const Main=({history}) => {
                 <div>
                 <img src={img_banner2} alt="img_banner2"/>{/* 경로 추가하기 누르면 해당 기부 페이지로 이동바꾸기*/}
                 </div>
-                <div>
-                <h3 style={contentStyle}>3</h3>
-                </div>
-                <div>
-                <h3 style={contentStyle}>4</h3>
-                </div>
+                
             </Carousel>
                 </div>
 

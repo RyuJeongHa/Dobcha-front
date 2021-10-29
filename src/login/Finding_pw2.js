@@ -1,9 +1,32 @@
 import React from 'react'
 import './Finding_pw2.css';
-import { Divider, Input, Button} from 'antd';
+import { Divider, Input, Button,Menu, Dropdown} from 'antd';
 import logo from '../images/dobcha_logo.png';
 
+
 const Finding_pw2=({history}) => {
+
+    const menu = (
+        <Menu>
+          <Menu.Item>
+          <a onClick={() => {history.push('/login/Login')}} 
+          style={{padding:'10px'}}
+          >
+              진행중인 기부  
+            </a>
+          </Menu.Item>  {/* 진행중인 기부 경로 바꾸기*/} 
+
+          <Menu.Item>
+          <a onClick={() => {history.push('/login/Login')}} 
+          style={{padding:'10px', marginLeft:'5px'}}
+          >
+             마감된 기부
+            </a>
+          </Menu.Item>  {/* 마감된 기부 경로 바꾸기*/} 
+        </Menu>
+      );
+
+
     return(
         <div className='frame4'>
             <div className='top5'>
@@ -12,10 +35,11 @@ const Finding_pw2=({history}) => {
                         onClick ={( )=> {history.push('/')}}
                         /></Button>
                     <div className='click3'>
-                 <a onClick={() => {history.push('/')}} 
-                 style={{padding:'15px', marginRight:'50px',
-                     color:'#000000' , fontSize:'17px', fontWeight:'bold' 
-                }}> 기부  {/* 기부 페이지 생기면 경로 바꾸기*/} </a>
+                    <Dropdown overlay={menu} placement="bottomCenter" arrow>
+                        <Button style={{padding:'10px', marginRight:'50px',
+                     color:'#000000' , fontSize:'17px', fontWeight:'bold', border:'none',marginTop:'5px',
+                }}  >기부</Button>
+                     </Dropdown>
 
                 <a onClick={() => {history.push('/hompage/Volunteer')}} 
                  style={{padding:'15px', marginRight:'30px',

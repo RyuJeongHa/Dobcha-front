@@ -33,6 +33,7 @@
 .main_donation{
     display: flex;
     flex-direction: row;
+    margin-top: 20px;
     margin-bottom: 120px;
     align-content:space-around ;
 }
