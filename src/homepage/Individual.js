@@ -1,15 +1,61 @@
-import React from  'react'
+import React, { useState } from 'react';
 import './Individual.css';
-import { Divider,  Button, Carousel, Menu, Dropdown,Modal} from 'antd';
+import { Divider,  Button, Carousel, Menu, Dropdown,Modal, Drawer, Upload, message} from 'antd';
 import logo from '../images/dobcha_logo.png';
 import img_banner1 from '../images/img_banner1.png';
 import img_banner2 from '../images/img_banner2.png';
 import img_donation from '../images/img_donation.png';
 import img_volunteer from '../images/img_volunteer.png';
 import { BankFilled ,UserOutlined} from '@ant-design/icons';
+import ImgCrop from 'antd-img-crop';
 
 
 const Individual=({history}) => {
+    const getBase64=(img, callback) =>{
+        const reader = new FileReader();
+        reader.addEventListener('load', () => callback(reader.result));
+        reader.readAsDataURL(img);
+      }
+      const beforeUpload=(file) =>{
+        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+        if (!isJpgOrPng) {
+          message.error('You can only upload JPG/PNG file!');
+        }
+        const isLt2M = file.size / 1024 / 1024 < 2;
+        if (!isLt2M) {
+          message.error('Image must smaller than 2MB!');
+        }
+        return isJpgOrPng && isLt2M;
+      }
+      
+     
+
+        const handleChange = (info) =>{ 
+           
+            if (info.file.status === 'uploading') {
+              this.setState({ loading: true });
+              return;
+            }
+            if (info.file.status === 'done') {
+
+              getBase64(info.file.originFileObj, imageUrl =>
+                this.setState({
+                  imageUrl,
+                  loading: false,
+                }),
+              );
+            
+        }
+          };
+       
+
+          const [visible, setVisible] = useState(false);
+        const showDrawer = () => {
+          setVisible(true);
+        };
+        const onClose = () => {
+          setVisible(false);
+        };
 
     const individualname = '류정하'
     //임의로 설정했습니다. 나중에 db에서 가져와주세요~~
@@ -70,8 +116,51 @@ const Individual=({history}) => {
 
                 <div className='main_btn'>
                     <div className='individual_icon'  style={{marginTop:'12px', marginRight:'30px'}}>
-                        {<UserOutlined onClick={()=> {history.push('/login/Login')}} 
-                    style={{fontSize:'20px'}}/>}  &nbsp;&nbsp;
+                        {<UserOutlined onClick={showDrawer} 
+                    style={{fontSize:'20px'}}/>} 
+                    
+                    <Drawer title="Mypage" placement="right" onClose={onClose} visible={visible}
+                    style={{fontWeight:'bold'}} 
+                    >
+
+
+                    <div style={{display:'flex', justifyContent:'center', marginLeft:'50px'}}>
+                    
+                        
+                       <ImgCrop rotate>
+                        <Upload {...handleChange}
+                        name="avatar"
+        listType="picture-card"
+        className="avatar-uploader"
+        showUploadList={false}
+        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        beforeUpload={beforeUpload}
+       
+       
+         >
+                     <UserOutlined style={{fontSize:'40px', width:'100%'}}/> 
+                        </Upload>
+                        </ImgCrop>
+
+                    </div>
+
+                    
+
+                        <div style={{display:'flex', justifyContent:'center'}}>
+                        <text style={{color: 'black',fontSize:'15px',  fontWeight:'bold', marginTop:'10px'}}>
+                    {`${individualname} 님`}</text>
+                    </div>
+
+                        <div style={{display:'flex', justifyContent:'center', marginTop:'20px'}}>
+                        <Button  type='primary' style={{ border:'none', borderRadius:'10px'}}
+                        onClick ={( )=> {history.push('/')}} /*  Individual_Detail로 경로 바꾸기*/
+                        >내역 조회하기</Button> </div>
+                    </Drawer>
+                    
+                    
+                    
+                    
+                     &nbsp;&nbsp;
                     <text style={{color: 'black',fontSize:'17px',  fontWeight:'bold'}}>
                     {`${individualname} 님`}
                 </text>
