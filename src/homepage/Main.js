@@ -10,25 +10,6 @@ import img_volunteer from '../images/img_volunteer.png';
 
 const Main=({history}) => {
 
-    const menu = (
-        <Menu>
-          <Menu.Item>
-          <a onClick={() => {history.push('/login/Login')}} 
-          style={{padding:'10px'}}
-          >
-              진행중인 기부  
-            </a>
-          </Menu.Item>  {/* 진행중인 기부 경로 바꾸기*/} 
-
-          <Menu.Item>
-          <a onClick={() => {history.push('/login/Login')}} 
-          style={{padding:'10px', marginLeft:'5px'}}
-          >
-             마감된 기부
-            </a>
-          </Menu.Item>  {/* 마감된 기부 경로 바꾸기*/} 
-        </Menu>
-      );
       
   
     return(
@@ -39,23 +20,20 @@ const Main=({history}) => {
                             onClick ={( )=> {history.push('/')}}
                             /></Button>
                 <div className='main_click'>
-
-                     <Dropdown overlay={menu} placement="bottomCenter" arrow>
-                        <Button style={{padding:'10px', marginRight:'50px',
-                     color:'#000000' , fontSize:'17px', fontWeight:'bold', border:'none'
-                }}  >기부</Button>
-                     </Dropdown>
-
-
-                 
-                <a onClick={() => {history.push('/hompage/Volunteer')}} 
+                <a onClick={() => {history.push('/login/Login')}} 
                  style={{padding:'10px', marginRight:'20px',
                      color:'#000000' , fontSize:'17px', fontWeight:'bold' 
-                }}> 봉사활동  {/* 봉사활동 페이지를 만들게 되면 경로 바꾸기*/} </a>
+                }}> 기부  {/* 기부 페이지로 경로 바꾸기*/} </a>
                 <a onClick={() => {history.push('/')}} 
-                 style={{padding:'10px',marginLeft:'20px',
+                 style={{padding:'10px',marginLeft:'20px',marginRight:'20px',
                      color:'#000000' , fontSize:'17px', fontWeight:'bold' 
-                }}> 플랫폼 소개  {/* 플랫폼 소개 페이지를 만들게 되면 경로 바꾸기*/} </a>
+                }}> 진행중인 기부  {/* 진행중인 기부 페이지로 경로 바꾸기*/} </a>
+
+                 
+                <a onClick={() => {history.push('/')}} 
+                 style={{padding:'10px', marginRight:'20px',marginLeft:'20px',
+                     color:'#000000' , fontSize:'17px', fontWeight:'bold' 
+                }}> 마감된 기부 {/* 마감된 기부 페이지로 경로 바꾸기*/} </a>
                 </div>
 
                 <div className='main_btn'>

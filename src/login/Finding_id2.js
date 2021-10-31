@@ -6,25 +6,7 @@ import logo from '../images/dobcha_logo.png'
 
 
 const Finding_id2=({history}) => {
-    const menu = (
-        <Menu>
-          <Menu.Item>
-          <a onClick={() => {history.push('/login/Login')}} 
-          style={{padding:'10px'}}
-          >
-              진행중인 기부  
-            </a>
-          </Menu.Item>  {/* 진행중인 기부 경로 바꾸기*/} 
-
-          <Menu.Item>
-          <a onClick={() => {history.push('/login/Login')}} 
-          style={{padding:'10px', marginLeft:'5px'}}
-          >
-             마감된 기부
-            </a>
-          </Menu.Item>  {/* 마감된 기부 경로 바꾸기*/} 
-        </Menu>
-      );
+    
 
     return(
         <div className='frame2'>
@@ -34,20 +16,20 @@ const Finding_id2=({history}) => {
                         onClick ={( )=> {history.push('/')}}
                         /></Button>
                     <div className='click1'>
-                    <Dropdown overlay={menu} placement="bottomCenter" arrow>
-                        <Button style={{padding:'10px', marginRight:'50px',
-                     color:'#000000' , fontSize:'17px', fontWeight:'bold', border:'none',marginTop:'5px',
-                }}  >기부</Button>
-                     </Dropdown>
+                    <a onClick={() => {history.push('/login/Login')}} 
+                 style={{padding:'10px', marginRight:'20px',
+                     color:'#000000' , fontSize:'17px', fontWeight:'bold' 
+                }}> 기부  {/* 기부 페이지로 경로 바꾸기*/} </a>
+                <a onClick={() => {history.push('/')}} 
+                 style={{padding:'10px',marginLeft:'20px',marginRight:'20px',
+                     color:'#000000' , fontSize:'17px', fontWeight:'bold' 
+                }}> 진행중인 기부  {/* 진행중인 기부 페이지로 경로 바꾸기*/} </a>
 
+                 
                 <a onClick={() => {history.push('/')}} 
-                 style={{padding:'15px', marginRight:'30px',
+                 style={{padding:'10px', marginRight:'20px',marginLeft:'20px',
                      color:'#000000' , fontSize:'17px', fontWeight:'bold' 
-                }}> 봉사활동  {/* 봉사활동 페이지를 만들게 되면 경로 바꾸기*/} </a>
-                <a onClick={() => {history.push('/')}} 
-                 style={{padding:'15px',marginLeft:'20px',
-                     color:'#000000' , fontSize:'17px', fontWeight:'bold' 
-                }}> 플랫폼 소개  {/* 플랫폼 소개 페이지를 만들게 되면 경로 바꾸기*/} </a>
+                }}> 마감된 기부 {/* 마감된 기부 페이지로 경로 바꾸기*/} </a>
                                 </div>
                                 <div className='btn1'>
                 <Button block 
