@@ -87,15 +87,11 @@ const Agency=({history}) => {
                             onClick ={( )=> {history.push('/')}}
                             /></Button>
                 <div className='main_click'>
-                <a onClick={() => {history.push('/login/Login')}} 
-                 style={{padding:'10px', marginRight:'20px',
-                     color:'#000000' , fontSize:'17px', fontWeight:'bold' 
-                }}> 기부  {/* 기부 페이지로 경로 바꾸기*/} </a>
+                
                 <a onClick={() => {history.push('/')}} 
-                 style={{padding:'10px',marginLeft:'20px',marginRight:'20px',
+                 style={{padding:'10px',marginRight:'50px',
                      color:'#000000' , fontSize:'17px', fontWeight:'bold' 
                 }}> 진행중인 기부  {/* 진행중인 기부 페이지로 경로 바꾸기*/} </a>
-
                  
                 <a onClick={() => {history.push('/')}} 
                  style={{padding:'10px', marginRight:'20px',marginLeft:'20px',
@@ -143,7 +139,7 @@ const Agency=({history}) => {
 
                         <div style={{display:'flex', justifyContent:'center', marginTop:'20px'}}>
                         <Button  type='primary' style={{ border:'none', borderRadius:'10px'}}
-                        onClick ={( )=> {history.push('/')}} /*  Agency_registering으로 경로 바꾸기*/
+                        onClick ={( )=> {history.push('/hompage/Agency_registering')}} 
                         >글 등록하기</Button> </div>
                     </Drawer>
 

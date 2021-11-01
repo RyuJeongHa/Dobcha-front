@@ -16,15 +16,10 @@ const Finding_id2=({history}) => {
                         onClick ={( )=> {history.push('/')}}
                         /></Button>
                     <div className='click1'>
-                    <a onClick={() => {history.push('/login/Login')}} 
-                 style={{padding:'10px', marginRight:'20px',
-                     color:'#000000' , fontSize:'17px', fontWeight:'bold' 
-                }}> 기부  {/* 기부 페이지로 경로 바꾸기*/} </a>
-                <a onClick={() => {history.push('/')}} 
-                 style={{padding:'10px',marginLeft:'20px',marginRight:'20px',
+                    <a onClick={() => {history.push('/')}} 
+                 style={{padding:'10px',marginRight:'50px',
                      color:'#000000' , fontSize:'17px', fontWeight:'bold' 
                 }}> 진행중인 기부  {/* 진행중인 기부 페이지로 경로 바꾸기*/} </a>
-
                  
                 <a onClick={() => {history.push('/')}} 
                  style={{padding:'10px', marginRight:'20px',marginLeft:'20px',

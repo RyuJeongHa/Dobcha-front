@@ -1,16 +1,43 @@
-import React, { useState } from 'react';
-import './Individual.css';
-import { Divider,  Button, Carousel, Menu, Dropdown,Modal, Drawer, Upload, message} from 'antd';
+import './Agency_Registering.css';
+import React, { useState,useRef,useMemo } from 'react';
+import { Divider, DatePicker ,Button, InputNumber, Space,Input,Modal, Drawer, Upload, message} from 'antd';
 import logo from '../images/dobcha_logo.png';
-import img_banner1 from '../images/img_banner1.png';
-import img_banner2 from '../images/img_banner2.png';
-import img_donation from '../images/img_donation.png';
-import img_volunteer from '../images/img_volunteer.png';
-import { BankFilled ,UserOutlined} from '@ant-design/icons';
+import { BankFilled,UploadOutlined } from '@ant-design/icons';
 import ImgCrop from 'antd-img-crop';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 
-const Individual=({history}) => {
+
+const Agency_Registering=({history}) =>{
+    const { RangePicker } = DatePicker;
+
+    const {TextArea} = Input;
+
+    function onChange(value) {
+        console.log('changed', value);
+      }
+
+    const props = {
+        name: 'file',
+        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+        headers: {
+          authorization: 'authorization-text',
+        },
+        onChange(info) {
+          if (info.file.status !== 'uploading') {
+            console.log(info.file, info.fileList);
+          }
+          if (info.file.status === 'done') {
+            message.success(`${info.file.name} file uploaded successfully`);
+          } else if (info.file.status === 'error') {
+            message.error(`${info.file.name} file upload failed.`);
+          }
+        },
+      };
+
+
+
     const getBase64=(img, callback) =>{
         const reader = new FileReader();
         reader.addEventListener('load', () => callback(reader.result));
@@ -47,7 +74,8 @@ const Individual=({history}) => {
             
         }
           };
-       
+      
+
 
           const [visible, setVisible] = useState(false);
         const showDrawer = () => {
@@ -56,33 +84,30 @@ const Individual=({history}) => {
         const onClose = () => {
           setVisible(false);
         };
+    
 
-    const individualname = '류정하'
+    const agencyname = '가나다라'
     //임의로 설정했습니다. 나중에 db에서 가져와주세요~~
 
     const [isModal, setIsModal] = React.useState(false);
 
-   
+    
 
-      React.useEffect(() => {
-        alert(`${individualname}님 안녕하세요`)
-    },[])
-      
-  
+
+
     return(
-        <div className='main_frame'>
-            <div className='main_top'>
+        <div className='AR_frame'>
+            <div className="registering_top">
                 <Button style={{ border:'none'}}
                     ><img src={logo} alt ="dobcha_logo" 
                             onClick ={( )=> {history.push('/')}}
                             /></Button>
                 <div className='main_click'>
-
+                
                 <a onClick={() => {history.push('/')}} 
                  style={{padding:'10px',marginRight:'50px',
                      color:'#000000' , fontSize:'17px', fontWeight:'bold' 
                 }}> 진행중인 기부  {/* 진행중인 기부 페이지로 경로 바꾸기*/} </a>
-
                  
                 <a onClick={() => {history.push('/')}} 
                  style={{padding:'10px', marginRight:'20px',marginLeft:'20px',
@@ -91,9 +116,10 @@ const Individual=({history}) => {
                 </div>
 
                 <div className='main_btn'>
-                    <div className='individual_icon'  style={{marginTop:'12px', marginRight:'30px'}}>
-                        {<UserOutlined onClick={showDrawer} 
-                    style={{fontSize:'20px'}}/>} 
+                    <div className='agency_icon'  style={{marginTop:'12px', marginRight:'30px'}}>
+                        {<BankFilled onClick={showDrawer}
+                    style={{fontSize:'20px'}}/>
+                    }  
                     
                     <Drawer title="Mypage" placement="right" onClose={onClose} visible={visible}
                     style={{fontWeight:'bold'}} 
@@ -114,7 +140,7 @@ const Individual=({history}) => {
        
        
          >
-                     <UserOutlined style={{fontSize:'40px', width:'100%'}}/> 
+                     <BankFilled style={{fontSize:'40px', width:'100%'}}/> 
                         </Upload>
                         </ImgCrop>
 
@@ -124,21 +150,22 @@ const Individual=({history}) => {
 
                         <div style={{display:'flex', justifyContent:'center'}}>
                         <text style={{color: 'black',fontSize:'15px',  fontWeight:'bold', marginTop:'10px'}}>
-                    {`${individualname} 님`}</text>
+                    {`${agencyname} 님`}</text>
                     </div>
 
                         <div style={{display:'flex', justifyContent:'center', marginTop:'20px'}}>
                         <Button  type='primary' style={{ border:'none', borderRadius:'10px'}}
-                        onClick ={( )=> {history.push('/')}} /*  Individual_Detail로 경로 바꾸기*/
-                        >내역 조회하기</Button> </div>
+                        onClick ={( )=> {history.push('/hompage/Agency_registering')}} 
+                        >글 등록하기</Button> </div>
                     </Drawer>
-                    
-                    
-                    
-                     &nbsp;&nbsp;
+
+
+
+                    &nbsp;&nbsp;
                     <text style={{color: 'black',fontSize:'17px',  fontWeight:'bold'}}>
-                    {`${individualname} 님`}
+                    {`${agencyname} 님`}
                 </text>
+
                     </div> 
                     <div style={{marginTop:'12px'}}>
                     <a onClick={() => setIsModal(true)} 
@@ -160,48 +187,84 @@ const Individual=({history}) => {
                 </div>
             </Modal>
                 </div>
+                </div>
+
+                <Divider/>
+
+
+
+            <div className="registering_middle">
+                <div classname="ar_text" style={{marginLeft:'75px',fontSize:'17px',marginBottom:'5px'}}>글 등록</div>
+                <div className="table_box">
+                <div className="table_boxT">
+                <div className='table_BoxNtext' style={{alignContent:'center'}}>
+                        제목
+                        </div>
+                        <Input placeholder=" " 
+                        style={{width:'500px', height:'30px',marginLeft:'15px'}}
+                        />
+                </div>
+                <div className="table_boxW">
+                <div className='table_BoxWtext' style={{alignContent:'center'}}>
+                        내용
+                        </div>
+                        <TextArea rows={4} style={{width:'500px',marginLeft:'15px'}}
+                        ></TextArea>
+                </div>
+                <div className="table_boxUP">
+                <div className='table_BoxUPtext' style={{alignContent:'center'}}>
+                        사용계획
+                        </div>
+                        <TextArea rows={4} style={{width:'500px',marginLeft:'15px', marginRight:'25px'}}
+                        ></TextArea>
+                </div>
+                <div className="table_boxM">
+                <div className='table_BoxUPtext' style={{alignContent:'center'}}>
+                        목표금액
+                        </div>
+                        <InputNumber
+                            style={{width:'265px', height:'33px',marginLeft:'15px',marginRight:'261px'}}
+                            defaultValue={10000000}
+                            formatter={value => `₩ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                            parser={value => value.replace(/\$\s?|(,*)/g, '')}
+                            onChange={onChange}
+                        />
+                </div>
+                <div className="table_boxD">
+                <div className='table_BoxUPtext' style={{alignContent:'center'}}>
+                        모금기간
+                        </div>
+                        <Space size={12} style={{marginLeft:'15px',marginRight:'260px'}}>
+                        <RangePicker />
+                        </Space>
+                </div>
+
+
+
+
+                <div className="regist_btn">
+                <Upload {...props}>
+                    <Button style={{display:'flex',width: '120px', marginLeft:'28px',height: '30px', justifyContent: 'center'
+                    ,borderRadius:'5px', marginRight:'10px', marginTop:'30px'}} icon={<UploadOutlined style={{fontSize:"15px"
+                    }}/>}> File Upload
+                        </Button>
+                </Upload>
+          
+                <Button block 
+                    style={{display:'flex',width: '100px', height: '30px', justifyContent: 'center'
+                    ,borderRadius:'5px', marginTop:'30px'}}
+                    onClick={()=> {history.push('/')}} 
+                    >등록</Button> {/* 진행중인 기부로 경로 바꾸기 */}
+                    </div>
+
+                </div>
 
 
 
             </div>
-            <Divider/>
 
 
-
-            <div className='main_middle'>
-                <div className='main_banner'>
-                            <Carousel autoplay>
-                <div>
-                <img src={img_banner1} alt="img_banner1"/>{/* 경로 추가하기 누르면 해당 기부 페이지로 이동바꾸기*/}
-                </div>
-                <div>
-                <img src={img_banner2} alt="img_banner2"/>{/* 경로 추가하기 누르면 해당 기부 페이지로 이동바꾸기*/}
-                </div>
-                
-            </Carousel>
-                </div>
-
-
-
-                <div className='main_donation'>
-                    <Button style={{ border:'none'}}
-                        ><img src={img_donation} alt ="btn_donation" 
-                                onClick ={( )=> {history.push('./')}} /* 기부메뉴(Donation_Menu) 경로 바꾸기*/
-                                /></Button>
-                </div>
-{/** 나중에 main_donation, main_volunteer 부분 css 바꾸기!! 등록된 종류가 늘어나면...결론: 백엔드와 같이 상의 */}
-
-                <div className='main_volunteer'>
-                <Button style={{ border:'none'}}
-                    ><img src={img_volunteer} alt ="btn_volunteer" 
-                            onClick ={( )=> {history.push('./hompage/Volunteer')}}
-                            /></Button>
-                </div>
-            </div>
-
-
-
-            <div className='main_bottom'>
+            <div className="registering_bottom">
             <a herf = "#" style={{color:'#8c8c8c'}}>돕차 소개</a>
                     <Divider type="vertical"/>
                     <a herf = "#" style={{color:'#8c8c8c'}}>돕차 이용 약관</a>
@@ -214,5 +277,4 @@ const Individual=({history}) => {
 }
 
 
-
-export default Individual;
+export default Agency_Registering;

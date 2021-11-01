@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route }  from 'react-router-dom';
 import Login from './login/Login';
 import Main from './homepage/Main';
 import Agency from './homepage/Agency';
+import Agency_Registering from './homepage/Agency_Registering';
 import Individual from './homepage/Individual';
 import Volunteer from './homepage/Volunteer';
 import Finding_id from './login/Finding_id';
@@ -19,7 +20,7 @@ const App = () => {
     <Router>
       <Route path ='/' exact component = {Main}/>
       <Route path ='/hompage/Agency' exact component = {Agency}/>
-     
+     <Route path='/hompage/Agency_Registering' exact component={Agency_Registering}/>
       <Route path ='/hompage/Individual' exact component = {Individual}/>
       <Route path ='/hompage/Volunteer' exact component = {Volunteer}/>
       <Route path ='/login/Login' exact component = {Login}/>
