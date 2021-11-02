@@ -129,7 +129,7 @@ const Individual=({history}) => {
 
                         <div style={{display:'flex', justifyContent:'center', marginTop:'20px'}}>
                         <Button  type='primary' style={{ border:'none', borderRadius:'10px'}}
-                        onClick ={( )=> {history.push('/hompage/Individual_Detail')}} /*  Individual_Detail로 경로 바꾸기*/
+                        onClick ={( )=> {history.push('/hompage/Individual_Detail')}} 
                         >내역 조회하기</Button> </div>
                     </Drawer>
                     
@@ -172,10 +172,10 @@ const Individual=({history}) => {
                 <div className='main_banner'>
                             <Carousel autoplay>
                 <div>
-                <img src={img_banner1} alt="img_banner1"/>{/* 경로 추가하기 누르면 해당 기부 페이지로 이동바꾸기*/}
+                <img src={img_banner1} alt="img_banner1"/>
                 </div>
                 <div>
-                <img src={img_banner2} alt="img_banner2"/>{/* 경로 추가하기 누르면 해당 기부 페이지로 이동바꾸기*/}
+                <img src={img_banner2} alt="img_banner2"/>
                 </div>
                 
             </Carousel>

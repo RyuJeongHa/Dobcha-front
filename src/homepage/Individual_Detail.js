@@ -122,7 +122,7 @@ const Individual_Detail=({history}) => {
 
                         <div style={{display:'flex', justifyContent:'center', marginTop:'20px'}}>
                         <Button  type='primary' style={{ border:'none', borderRadius:'10px'}}
-                        onClick ={( )=> {history.push('/hompage/Individual_Detail')}} /*  Individual_Detail로 경로 바꾸기*/
+                        onClick ={( )=> {history.push('/hompage/Individual_Detail')}} 
                         >내역 조회하기</Button> </div>
                     </Drawer>
                     
@@ -171,7 +171,7 @@ const Individual_Detail=({history}) => {
 
                     </div>
                 </div>
-            </div>
+            </div> {/** db 연동 후 글 등록하기 버튼 누르면 내역 뜨게끔 하기 */}
 
 
             <div className="detail_bottom">

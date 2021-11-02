@@ -34,6 +34,14 @@ const Agency_Registering=({history}) =>{
             message.error(`${info.file.name} file upload failed.`);
           }
         },
+        defaultFileList: [
+            {
+              uid: '1',
+              name: 'xxx.png',
+              status: 'done',
+              response: 'Server Error 500', // custom error message to show
+              src: {logo}
+            },] // png db에서 가져오는 식으로 코드 바꾸기 => 임의로 사진 설정
       };
 
 
