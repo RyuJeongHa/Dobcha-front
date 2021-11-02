@@ -5,6 +5,7 @@ import Main from './homepage/Main';
 import Agency from './homepage/Agency';
 import Agency_Registering from './homepage/Agency_Registering';
 import Individual from './homepage/Individual';
+import Individual_Detail from './homepage/Individual_Detail';
 import Volunteer from './homepage/Volunteer';
 import Finding_id from './login/Finding_id';
 import Finding_id2 from './login/Finding_id2';
@@ -22,6 +23,7 @@ const App = () => {
       <Route path ='/hompage/Agency' exact component = {Agency}/>
      <Route path='/hompage/Agency_Registering' exact component={Agency_Registering}/>
       <Route path ='/hompage/Individual' exact component = {Individual}/>
+      <Route path ='/hompage/Individual_Detail' exact component = {Individual_Detail}/>
       <Route path ='/hompage/Volunteer' exact component = {Volunteer}/>
       <Route path ='/login/Login' exact component = {Login}/>
       <Route path ='/login/Finding_id' exact component = {Finding_id}/>

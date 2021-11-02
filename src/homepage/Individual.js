@@ -129,7 +129,7 @@ const Individual=({history}) => {
 
                         <div style={{display:'flex', justifyContent:'center', marginTop:'20px'}}>
                         <Button  type='primary' style={{ border:'none', borderRadius:'10px'}}
-                        onClick ={( )=> {history.push('/')}} /*  Individual_Detail로 경로 바꾸기*/
+                        onClick ={( )=> {history.push('/hompage/Individual_Detail')}} /*  Individual_Detail로 경로 바꾸기*/
                         >내역 조회하기</Button> </div>
                     </Drawer>
                     

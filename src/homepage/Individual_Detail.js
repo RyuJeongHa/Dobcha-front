@@ -1,22 +1,12 @@
-
-import './Agency.css';
 import React, { useState } from 'react';
+import './Individual_Detail.css';
 import { Divider,  Button, Carousel, Menu, Dropdown,Modal, Drawer, Upload, message} from 'antd';
 import logo from '../images/dobcha_logo.png';
-import img_banner1 from '../images/img_banner1.png';
-import img_banner2 from '../images/img_banner2.png';
-import img_donation from '../images/img_donation.png';
-import img_volunteer from '../images/img_volunteer.png';
-import { BankFilled } from '@ant-design/icons';
+import { UserOutlined} from '@ant-design/icons';
 import ImgCrop from 'antd-img-crop';
 
+const Individual_Detail=({history}) => {
 
-
-
-
-
-const Agency=({history}) => {
-   
     const getBase64=(img, callback) =>{
         const reader = new FileReader();
         reader.addEventListener('load', () => callback(reader.result));
@@ -53,57 +43,50 @@ const Agency=({history}) => {
             
         }
           };
-          
+       
 
-//사진 연동 널 죽이겠다 ㅋ
-    
-
-        const [visible, setVisible] = useState(false);
+          const [visible, setVisible] = useState(false);
         const showDrawer = () => {
           setVisible(true);
         };
         const onClose = () => {
           setVisible(false);
         };
-    
 
-    const agencyname = '가나다라'
+    const individualname = '류정하'
     //임의로 설정했습니다. 나중에 db에서 가져와주세요~~
 
     const [isModal, setIsModal] = React.useState(false);
 
-    
+   
 
-      React.useEffect(() => {
-        alert(`${agencyname}님 안녕하세요`)
-    },[])
-      
-  
+    
     return(
-        <div className='main_frame'>
-            <div className='main_top'>
-                <Button style={{ border:'none'}}
+        <div className="detail_frame">
+            <div className="detail_top">
+            <Button style={{ border:'none'}}
                     ><img src={logo} alt ="dobcha_logo" 
                             onClick ={( )=> {history.push('/')}}
                             /></Button>
-                <div className='main_click'>
+
+                <div className='detail_click'>
+
+                <a onClick={() => {history.push('/')}} 
+                style={{padding:'10px',marginRight:'50px',
+                    color:'#000000' , fontSize:'17px', fontWeight:'bold' 
+                }}> 진행중인 기부  {/* 진행중인 기부 페이지로 경로 바꾸기*/} </a>
+
                 
                 <a onClick={() => {history.push('/')}} 
-                 style={{padding:'10px',marginRight:'50px',
-                     color:'#000000' , fontSize:'17px', fontWeight:'bold' 
-                }}> 진행중인 기부  {/* 진행중인 기부 페이지로 경로 바꾸기*/} </a>
-                 
-                <a onClick={() => {history.push('/')}} 
-                 style={{padding:'10px', marginRight:'20px',marginLeft:'20px',
-                     color:'#000000' , fontSize:'17px', fontWeight:'bold' 
+                style={{padding:'10px', marginRight:'20px',marginLeft:'20px',
+                    color:'#000000' , fontSize:'17px', fontWeight:'bold' 
                 }}> 마감된 기부 {/* 마감된 기부 페이지로 경로 바꾸기*/} </a>
                 </div>
-
-                <div className='main_btn'>
-                    <div className='agency_icon'  style={{marginTop:'12px', marginRight:'30px'}}>
-                        {<BankFilled onClick={showDrawer}
-                    style={{fontSize:'20px'}}/>
-                    }  
+                
+                <div className='detail_btn'>
+                    <div className='individual_icon'  style={{marginTop:'12px', marginRight:'30px'}}>
+                        {<UserOutlined onClick={showDrawer} 
+                    style={{fontSize:'20px'}}/>} 
                     
                     <Drawer title="Mypage" placement="right" onClose={onClose} visible={visible}
                     style={{fontWeight:'bold'}} 
@@ -124,7 +107,7 @@ const Agency=({history}) => {
        
        
          >
-                     <BankFilled style={{fontSize:'40px', width:'100%'}}/> 
+                     <UserOutlined style={{fontSize:'40px', width:'100%'}}/> 
                         </Upload>
                         </ImgCrop>
 
@@ -134,22 +117,21 @@ const Agency=({history}) => {
 
                         <div style={{display:'flex', justifyContent:'center'}}>
                         <text style={{color: 'black',fontSize:'15px',  fontWeight:'bold', marginTop:'10px'}}>
-                    {`${agencyname} 님`}</text>
+                    {`${individualname} 님`}</text>
                     </div>
 
                         <div style={{display:'flex', justifyContent:'center', marginTop:'20px'}}>
                         <Button  type='primary' style={{ border:'none', borderRadius:'10px'}}
-                        onClick ={( )=> {history.push('/hompage/Agency_Registering')}} 
-                        >글 등록하기</Button> </div>
+                        onClick ={( )=> {history.push('/hompage/Individual_Detail')}} /*  Individual_Detail로 경로 바꾸기*/
+                        >내역 조회하기</Button> </div>
                     </Drawer>
-
-
-
-                    &nbsp;&nbsp;
+                    
+                    
+                    
+                     &nbsp;&nbsp;
                     <text style={{color: 'black',fontSize:'17px',  fontWeight:'bold'}}>
-                    {`${agencyname} 님`}
+                    {`${individualname} 님`}
                 </text>
-
                     </div> 
                     <div style={{marginTop:'12px'}}>
                     <a onClick={() => setIsModal(true)} 
@@ -170,49 +152,29 @@ const Agency=({history}) => {
                     <h2>로그아웃을 하시겠습니까?</h2>
                 </div>
             </Modal>
-                </div>
-
-
+            </div>
 
             </div>
             <Divider/>
 
 
+            <div className="detail_middle">
+                <div className="doing_donation">
+                    <div style={{ marginLeft:'40px'}}> 진행중인 기부</div>
+                    <div className="doing_donation_box">
 
-            <div className='main_middle'>
-                <div className='main_banner'>
-                            <Carousel autoplay>
-                <div>
-                <img src={img_banner1} alt="img_banner1"/>{/* 경로 추가하기 누르면 해당 기부 페이지로 이동바꾸기*/}
+                    </div>
                 </div>
-                <div>
-                <img src={img_banner2} alt="img_banner2"/>{/* 경로 추가하기 누르면 해당 기부 페이지로 이동바꾸기*/}
-                </div>
-                
-            </Carousel>
-                </div>
+                <div className="done_donation">
+                    <div style={{ marginLeft:'47px'}}> 마감된 기부</div>
+                    <div className="done_donation_box">
 
-
-
-                <div className='main_donation'>
-                    <Button style={{ border:'none'}}
-                        ><img src={img_donation} alt ="btn_donation" 
-                                onClick ={( )=> {history.push('./')}} /* 기부메뉴(Donation_Menu) 경로 바꾸기*/
-                                /></Button>
-                </div>
-{/** 나중에 main_donation, main_volunteer 부분 css 바꾸기!! 등록된 종류가 늘어나면...결론: 백엔드와 같이 상의 */}
-
-                <div className='main_volunteer'>
-                <Button style={{ border:'none'}}
-                    ><img src={img_volunteer} alt ="btn_volunteer" 
-                            onClick ={( )=> {history.push('./hompage/Volunteer')}}
-                            /></Button>
+                    </div>
                 </div>
             </div>
 
 
-
-            <div className='main_bottom'>
+            <div className="detail_bottom">
             <a herf = "#" style={{color:'#8c8c8c'}}>돕차 소개</a>
                     <Divider type="vertical"/>
                     <a herf = "#" style={{color:'#8c8c8c'}}>돕차 이용 약관</a>
@@ -221,11 +183,10 @@ const Agency=({history}) => {
   Dobcha ©2021
             </div>
         </div>
+        
     )
-            }
-            
+  
 
+}
 
-
-
-export default Agency;
+export default Individual_Detail;
