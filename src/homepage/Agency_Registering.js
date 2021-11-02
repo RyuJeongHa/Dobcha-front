@@ -4,12 +4,23 @@ import { Divider, DatePicker ,Button, InputNumber, Space,Input,Modal, Drawer, Up
 import logo from '../images/dobcha_logo.png';
 import { BankFilled,UploadOutlined } from '@ant-design/icons';
 import ImgCrop from 'antd-img-crop';
-import ReactQuill from 'react-quill';
+import Editor from './EditorComponent';
+import Editor2 from './EditorComponent2';
 import 'react-quill/dist/quill.snow.css';
 
 
 
 const Agency_Registering=({history}) =>{
+    const [desc, setDesc] = useState('');
+    function onEditorChange(value) {
+        setDesc(value)
+    }
+    const [desc2, setDesc2] = useState('');
+    function onEditorChange2(value) {
+        setDesc2(value)
+    }
+
+
     const { RangePicker } = DatePicker;
 
     const {TextArea} = Input;
@@ -212,18 +223,20 @@ const Agency_Registering=({history}) =>{
                         />
                 </div>
                 <div className="table_boxW">
-                <div className='table_BoxWtext' style={{alignContent:'center'}}>
+                <div className='table_BoxWtext' style={{alignContent:'center', marginRight:'15px', marginLeft:'34px'}}>
                         내용
                         </div>
-                        <TextArea rows={4} style={{width:'500px',marginLeft:'15px'}}
-                        ></TextArea>
+                        <Editor 
+                        value={desc} onChange={onEditorChange} />
+                        
                 </div>
                 <div className="table_boxUP">
-                <div className='table_BoxUPtext' style={{alignContent:'center'}}>
+                <div className='table_BoxUPtext' style={{alignContent:'center',marginRight:'15px', marginLeft:'9px'}}>
                         사용계획
                         </div>
-                        <TextArea rows={4} style={{width:'500px',marginLeft:'15px', marginRight:'25px'}}
-                        ></TextArea>
+                        <Editor2 
+                        value={desc2} onChange={onEditorChange2} />
+                        
                 </div>
                 <div className="table_boxM">
                 <div className='table_BoxUPtext' style={{alignContent:'center'}}>
@@ -252,14 +265,14 @@ const Agency_Registering=({history}) =>{
                 <div className="regist_btn">
                 <Upload {...props}>
                     <Button style={{display:'flex',width: '120px', marginLeft:'28px',height: '30px', justifyContent: 'center'
-                    ,borderRadius:'5px', marginRight:'10px', marginTop:'30px'}} icon={<UploadOutlined style={{fontSize:"15px"
+                    ,borderRadius:'5px', marginRight:'10px', marginTop:'20px'}} icon={<UploadOutlined style={{fontSize:"15px"
                     }}/>}> File Upload
                         </Button>
                 </Upload>
           
                 <Button block 
                     style={{display:'flex',width: '100px', height: '30px', justifyContent: 'center'
-                    ,borderRadius:'5px', marginTop:'30px'}}
+                    ,borderRadius:'5px', marginTop:'20px'}}
                     onClick={()=> {history.push('/')}} 
                     >등록</Button> {/* 진행중인 기부로 경로 바꾸기 */}
                     </div>
