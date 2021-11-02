@@ -37,7 +37,6 @@ const Agency_Registering=({history}) =>{
         defaultFileList: [
             {
               uid: '1',
-              name: 'xxx.png',
               status: 'done',
               response: 'Server Error 500', // custom error message to show
               src: {logo}
@@ -108,7 +107,7 @@ const Agency_Registering=({history}) =>{
             <div className="registering_top">
                 <Button style={{ border:'none'}}
                     ><img src={logo} alt ="dobcha_logo" 
-                            onClick ={( )=> {history.push('/')}}
+                            onClick ={( )=> {history.push('/hompage/Agency')}}
                             /></Button>
                 <div className='main_click'>
                 

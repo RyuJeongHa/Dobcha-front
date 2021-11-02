@@ -66,7 +66,7 @@ const Individual_Detail=({history}) => {
             <div className="detail_top">
             <Button style={{ border:'none'}}
                     ><img src={logo} alt ="dobcha_logo" 
-                            onClick ={( )=> {history.push('/')}}
+                            onClick ={( )=> {history.push('/hompage/Individual')}}
                             /></Button>
 
                 <div className='detail_click'>
