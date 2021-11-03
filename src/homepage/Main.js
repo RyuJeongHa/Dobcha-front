@@ -41,7 +41,7 @@ const Main=({history}) => {
                     <Button block 
                     style={{display:'flex',width: '100px', height: '30px', justifyContent: 'center'
                     ,borderRadius:'5px', marginTop:'10px'}}
-                    onClick={()=> {history.push('/')}}
+                    onClick={()=> {history.push('/registration/Registration')}}
                     >회원가입 </Button>{/* 회원가입 페이지로 경로 바꾸기*/}
                 </div>
             </div>
@@ -75,7 +75,7 @@ const Main=({history}) => {
                 <div className='main_volunteer'>
                 <Button style={{ border:'none'}}
                     ><img src={img_volunteer} alt ="btn_volunteer" 
-                            onClick ={( )=> {history.push('./hompage/Volunteer')}}
+                            onClick ={( )=> {history.push('hompage/Volunteer')}}
                             /></Button>
                 </div>
             </div>

@@ -37,7 +37,7 @@ const Finding_pw2=({history}) => {
                 <Button block 
                 style={{display:'flex',width: '100px', height: '30px', justifyContent: 'center'
                 ,borderRadius:'5px', marginTop:'15px'}}
-                onClick={()=> {history.push('/')}}
+                onClick={()=> {history.push('/registration/Registration')}}
                 >회원가입 </Button>{/* 회원가입 페이지로 경로 바꾸기*/}
                 </div>
             </div>

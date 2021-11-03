@@ -74,7 +74,7 @@ const Individual=({history}) => {
             <div className='main_top'>
                 <Button style={{ border:'none'}}
                     ><img src={logo} alt ="dobcha_logo" 
-                            onClick ={( )=> {history.push('/')}}
+                            onClick ={( )=> {history.push('/hompage/Individual')}}
                             /></Button>
                 <div className='main_click'>
 
@@ -194,7 +194,7 @@ const Individual=({history}) => {
                 <div className='main_volunteer'>
                 <Button style={{ border:'none'}}
                     ><img src={img_volunteer} alt ="btn_volunteer" 
-                            onClick ={( )=> {history.push('./hompage/Volunteer')}}
+                            onClick ={( )=> {history.push('../hompage/Volunteer')}}
                             /></Button>
                 </div>
             </div>
